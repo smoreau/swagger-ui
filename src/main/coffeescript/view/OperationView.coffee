@@ -8,6 +8,14 @@ class OperationView extends Backbone.View
 
   initialize: ->
 
+  formatUrl: (url) ->
+    if (!url.match(/^HTTP/i))
+      baseUrl = $('#input_baseUrl').val()
+      indexApidocs = baseUrl.indexOf('apidocs')
+      if (indexApidocs != -1)
+        url = baseUrl.substring(0, indexApidocs - 1) + url
+    url
+
   render: ->
     isMethodSubmissionSupported = jQuery.inArray(@model.httpMethod, @model.supportedSubmitMethods()) >= 0
     @model.isReadOnly = true unless isMethodSubmissionSupported
@@ -127,6 +135,8 @@ class OperationView extends Backbone.View
           @model.urlify(map, false)
         else
           @model.urlify(map, true)
+
+      invocationUrl = @formatUrl(invocationUrl)
 
       log 'submitting ' + invocationUrl
 

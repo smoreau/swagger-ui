@@ -1,6 +1,15 @@
 class ParameterView extends Backbone.View
   initialize: ->
 
+  vscSampleJSON: ->
+    result = @model.sampleJSON
+
+    if result
+      result = result.replace /\n/g, "\n  "
+      result = "{\n  \"" + @model.name + "\": " + result + "\n}"
+
+    result
+
   render: ->
     @model.isBody = true if @model.paramType == 'body'
     @model.isFile = true if @model.dataType == 'file'
@@ -9,7 +18,7 @@ class ParameterView extends Backbone.View
     $(@el).html(template(@model))
 
     signatureModel =
-      sampleJSON: @model.sampleJSON
+      sampleJSON: @vscSampleJSON()
       isParam: true
       signature: @model.signature
 

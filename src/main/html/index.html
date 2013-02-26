@@ -45,10 +45,10 @@
     <script type="text/javascript">
         $(function () {
             window.swaggerUi = new SwaggerUi({
-                discoveryUrl:"http://petstore.swagger.wordnik.com/api/api-docs.json",
-                apiKey:"special-key",
+		discoveryUrl:"http://localhost:7505/horaireetresa-sam/apidocs/service.json",
                 dom_id:"swagger-ui-container",
-                supportHeaderParams: false,
+                supportHeaderParams: true,
+		headers: { "X-Device-Identifier": "testId", "X-Device-Type": "IPHONE" },
                 supportedSubmitMethods: ['get', 'post', 'put'],
                 onComplete: function(swaggerApi, swaggerUi){
                 	if(console) {
