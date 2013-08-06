@@ -152,6 +152,9 @@ class OperationView extends Backbone.View
         contentType: consumes
         dataType: 'json'
         processData: false
+        xhrFields: {
+          withCredentials: $('#input_keepSession').is(':checked')
+        }
         error: (xhr, textStatus, error) =>
           @showErrorStatus(xhr, textStatus, error)
         success: (data) =>

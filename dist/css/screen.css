@@ -441,6 +441,13 @@ body #header form#api_selector .input input#input_apiKey {
     width: 200px;
 }
 
+body #header form#api_selector .div_keepSession {
+    margin-top: 8px;
+    font-size: 0.8em;
+    color: white;
+    font-weight: bold;
+}
+
 body #header form#api_selector .input a#explore {
     display: block;
     text-decoration: none;
